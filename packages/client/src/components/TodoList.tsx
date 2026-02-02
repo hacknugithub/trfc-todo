@@ -20,7 +20,7 @@ export const TodoList = () => {
             {todos?.length === 0 && (
               <li className="py-12 text-center flex flex-col items-center text-gray-400">
                 <span className="text-4xl mb-4">✨</span>
-                <p>Todo limpio. ¡Disfruta tu día!</p>
+                <p>All done. Enjoy!!</p>
               </li>
             )}
             {todos?.map((todo) => (
