@@ -14,7 +14,6 @@ export const getAll = async (req: Request, res: Response) => {
 export const create = async (req: Request, res: Response) => {
   try {
     const validatedData = createTodoSchema.parse(req.body);
-    console.log(validatedData);
     const newTodo = await todoService.createTodo(validatedData);
     res.status(201).json(newTodo);
   } catch (error: any) {
@@ -28,9 +27,7 @@ export const create = async (req: Request, res: Response) => {
 export const update = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    console.log(id);
     const validatedData = updateTodoSchema.parse(req.body);
-    console.log(validatedData);
     const updatedTodo = await todoService.updateTodo(id as string, validatedData);
     res.json(updatedTodo);
   } catch (error) {

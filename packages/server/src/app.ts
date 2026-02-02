@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import todoRoutes from './routes/todo.routes';
+import userRoutes from './routes/user.routes';
+import authRoutes from './routes/auth.routes';
 
 export const app = express();
 
@@ -8,10 +10,12 @@ export const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Rutas
+// Routes
 app.use('/api/todos', todoRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
 
 // Health Check
-app.get('/health', (req, res) => {
+app.get('/health', (_req, res) => {
   res.status(200).json({ status: 'OK' });
 });
