@@ -4,10 +4,19 @@ import todoRoutes from './routes/todo.routes';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
 
+const allowedOrigins = [
+  'http://localhost:5173',
+  process.env.CLIENT_URL || ''
+];
+
 export const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // Routes

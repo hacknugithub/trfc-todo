@@ -4,12 +4,10 @@ import { authenticateToken } from '../middleware/auth.middleware';
 
 const router = Router();
 
-router.use(authenticateToken);
-
-router.get('/', UserController.getAll);
-router.get('/:id', UserController.getOne);
+router.get('/', authenticateToken,UserController.getAll);
+router.get('/:id', authenticateToken ,UserController.getOne);
 router.post('/', UserController.create);
-router.put('/:id', UserController.update);
-router.delete('/:id', UserController.remove);
+router.put('/:id', authenticateToken,UserController.update);
+router.delete('/:id', authenticateToken,UserController.remove);
 
 export default router;
