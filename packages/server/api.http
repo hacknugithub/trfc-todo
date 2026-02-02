@@ -1,0 +1,29 @@
+### Variables
+@baseUrl = http://localhost:3000/api
+
+### 1. Health Check
+GET http://localhost:3000/health
+
+### 2. Crear un TODO (Asumiendo que ya creaste un usuario con ID 1 manualmente o vía seed)
+POST {{baseUrl}}/todos
+Content-Type: application/json
+
+{
+  "title": "Terrific Todo",
+  "description": "Setup Todos",
+  "userId": "314h3j1kh431"
+}
+
+### 3. Obtener todos los TODOs
+GET {{baseUrl}}/todos
+
+### 4. Actualizar un TODO
+PATCH {{baseUrl}}/todos/1
+Content-Type: application/json
+
+{
+  "completed": true
+}
+
+### 5. Borrar un TODO
+DELETE {{baseUrl}}/todos/1

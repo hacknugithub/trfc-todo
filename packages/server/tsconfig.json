@@ -1,8 +1,13 @@
 {
   "compilerOptions": {
+    "target": "ES2020",             // Node soporta ES modernos
+    "module": "NodeNext",           // <--- CAMBIO CLAVE 1
+    "moduleResolution": "NodeNext", // <--- CAMBIO CLAVE 2 (Arregla el error)
     "esModuleInterop": true,
-    "skipLibCheck": true,      // <--- IMPORTANTE para Prisma
-    "ignoreDeprecations": "6.0",
-    "moduleResolution": "node"
-  }
+    "skipLibCheck": true,
+    "strict": true,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src"]
 }

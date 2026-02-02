@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": ["packages/*"],
+    "nohoist": [
+      "**/@prisma",
+      "**/@prisma/**",
+      "**/@prisma/client",
+      "**/@prisma/client/**",
+      "**/prisma",
+      "**/prisma/**"
+    ]
+  },
   "scripts": {
     "dev": "lerna run dev --parallel",
     "build": "lerna run build"
