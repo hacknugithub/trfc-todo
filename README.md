@@ -18,19 +18,22 @@ Before you begin, ensure you have the following installed:
 1.  **Clone the repository** (if you haven't already):
 
     ```bash
-    git clone <repository-url>
-    cd terrific-todo/packages/client
+    git clone https://github.com/hacknugithub/trfc-todo
+    cd terrific-todo
     ```
 
 2.  **Install dependencies**:
 
-    Navigate to the `packages/client` directory and install the required packages:
+    Navigate to the `terrific-todo` directory and install the required packages:
 
     ```bash
-    npm install
-    # or yarn install
-    # or pnpm install
+    yarn install
     ```
+
+3.  **Database**:
+
+   Make sure you have postgress installed and running
+
 
 ### Running the Application
 
@@ -57,7 +60,7 @@ This command bundles React in production mode and optimizes the build for the be
 To run the linter to check for code style and potential errors:
 
 ```bash
-yarn lint
+yarn @terrific-todo/client lint
 ```
 
 For more advanced ESLint configuration and React-specific lint rules, refer to the original `README.md` content or the project's `eslint.config.js` file.
