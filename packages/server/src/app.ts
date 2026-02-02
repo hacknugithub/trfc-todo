@@ -4,17 +4,29 @@ import todoRoutes from './routes/todo.routes';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.routes';
 
+export const app = express();
+
+const clientURL = (process.env.CLIENT_URL || '').trim().replace(/\/+$/, '');
+
 const allowedOrigins = [
   'http://localhost:5173',
-  process.env.CLIENT_URL || ''
+  clientURL
 ];
-
-export const app = express();
+console.log('CORS Allowed Origins:', allowedOrigins);
 
 // Middlewares
 app.use(cors({
-  origin: allowedOrigins,
+  origin: (origin, callback) => {
+    if(!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.error('CORS Rejected Origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 app.use(express.json());
