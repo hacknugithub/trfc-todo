@@ -5,12 +5,14 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "prisma generate",
-    "dev": "ts-node-dev --respawn --transpile-only --project tsconfig.json src/index.ts",
+    "dev": "ts-node-dev --respawn --transpile-only --project tsconfig.json src/server.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "node dist/server.js",
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
     "@prisma/client": "^6.4.0",
@@ -25,8 +27,12 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/node": "^25.1.0",
+    "@types/supertest": "^6.0.3",
     "prisma": "^6.4.0",
+    "supertest": "^7.2.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18",
+    "vitest-mock-extended": "^3.1.0"
   }
 }
