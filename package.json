@@ -15,8 +15,13 @@
     ]
   },
   "scripts": {
+    "build:client": "yarn workspace @terrific-todo/client build",
+    "start:client": "yarn workspace @terrific-todo/client start",
+    "build:server": "yarn workspace @terrific-todo/server build",
+    "start:server": "yarn workspace @terrific-todo/server start",
     "dev": "lerna run dev --parallel",
-    "build": "lerna run build"
+    "build": "lerna run build",
+    "db:deploy": "yarn workspace @terrific-todo/server prisma:deploy"
   },
   "dependencies": {},
   "devDependencies": {
