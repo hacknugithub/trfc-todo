@@ -35,9 +35,11 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const TodoController = __importStar(require("../controllers/todo.controller"));
+const auth_middleware_1 = require("../middleware/auth.middleware");
 const router = (0, express_1.Router)();
 router.get('/', TodoController.getAll);
-router.post('/', TodoController.create);
-router.put('/:id', TodoController.update);
-router.delete('/:id', TodoController.remove);
+router.post('/', auth_middleware_1.authenticateToken, TodoController.create);
+router.put('/:id', auth_middleware_1.authenticateToken, TodoController.update);
+router.patch('/:id', auth_middleware_1.authenticateToken, TodoController.update);
+router.delete('/:id', auth_middleware_1.authenticateToken, TodoController.remove);
 exports.default = router;

@@ -1,18 +1,15 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTodo = exports.updateTodo = exports.createTodo = exports.getTodos = void 0;
-const db_1 = __importDefault(require("../db"));
+const db_1 = require("../db");
 const getTodos = async () => {
-    return db_1.default.todo.findMany({
+    return db_1.prisma.todo.findMany({
         include: { user: { select: { name: true, email: true } } }
     });
 };
 exports.getTodos = getTodos;
 const createTodo = async (data) => {
-    return await db_1.default.todo.create({
+    return await db_1.prisma.todo.create({
         data: {
             title: data.title,
             description: data.description,
@@ -22,14 +19,14 @@ const createTodo = async (data) => {
 };
 exports.createTodo = createTodo;
 const updateTodo = async (id, data) => {
-    return await db_1.default.todo.update({
+    return await db_1.prisma.todo.update({
         where: { id },
         data
     });
 };
 exports.updateTodo = updateTodo;
 const deleteTodo = async (id) => {
-    return await db_1.default.todo.delete({
+    return await db_1.prisma.todo.delete({
         where: { id }
     });
 };
